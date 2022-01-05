@@ -16,7 +16,7 @@ import { ApplicationService } from './application.service';
 export class GenericHttpService {
   constructor(private http: HttpClient) {}
 
-  public findId<T>(endpoint: string): Observable<T> {
+  public findOne<T>(endpoint: string): Observable<T> {
     return this.http.get<T>(`${environment.api}/${endpoint}`);
   }
 
@@ -26,6 +26,14 @@ export class GenericHttpService {
 
   public create<T>(endpoint: string, data: T): Observable<T> {
     return this.http.post<T>(`${environment.api}/${endpoint}`, data);
+  }
+
+  public update<T>(endpoint: string, data: T): Observable<T> {
+    return this.http.put<T>(`${environment.api}/${endpoint}`, data);
+  }
+
+  public delete<T>(endpoint: string): Observable<T> {
+    return this.http.delete<T>(`${environment.api}/${endpoint}`);
   }
 }
 
