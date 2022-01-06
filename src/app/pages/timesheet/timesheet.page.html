@@ -3,7 +3,11 @@
     <div class="container" fxLayout="row" fxLayoutAlign="space-between start">
       <ion-img class="logo" src="./../../../assets/image/Logo.svg"></ion-img>
       <h2 class="name">Olá, {{ applicationService.getUserName() }}</h2>
-      <ion-img class="icon" src="./../../../assets/icon/logout.svg"></ion-img>
+      <ion-img
+        class="icon"
+        src="./../../../assets/icon/logout.svg"
+        (click)="logout()"
+      ></ion-img>
     </div>
   </section>
 </ion-content>

@@ -1,16 +1,19 @@
-import { AccountResponseDto } from 'src/app/model/AccountResponseDto';
+export class FindAllTimesheet {
+  static readonly type = '[TimeSheet Page] find all timesheet';
+  constructor() {}
+}
 
-// export class Login {
-//   static readonly type = '[Login Page] login';
-//   constructor(public email: string, public password: string) {}
-// }
+export class FindAllTimesheetSuccess {
+  static readonly type = '[TimeSheet Page] find all timesheet success';
+  constructor() {}
+}
 
-// export class LoginSuccess {
-//   static readonly type = '[Login Page] login success';
-//   constructor(public accountResponseDto: AccountResponseDto) {}
-// }
+export class FindAllTimesheetError {
+  static readonly type = '[TimeSheet Page] find all timesheet error';
+  constructor(public error: any) {}
+}
 
-// export class LoginError {
-//   static readonly type = '[Login Page] login error';
-//   constructor(public error: any) {}
-// }
+export class Logout {
+  static readonly type = '[TimeSheet Page] logout';
+  constructor() {}
+}

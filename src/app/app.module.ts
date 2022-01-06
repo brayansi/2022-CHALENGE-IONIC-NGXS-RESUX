@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { LoginState } from './pages/login/login.state';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TimesheetState } from './pages/timesheet/timesheet.state';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     IonicModule.forRoot(),
     AppRoutingModule,
     FlexLayoutModule,
-    NgxsModule.forRoot([LoginState], {
+    NgxsModule.forRoot([LoginState, TimesheetState], {
       developmentMode: !environment.production,
     }),
   ],

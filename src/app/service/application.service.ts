@@ -1,27 +1,26 @@
 import { Injectable } from '@angular/core';
 import { AccountResponseDto } from '../model/AccountResponseDto';
 
+import moment from 'moment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class ApplicationService {
-  private token = localStorage.getItem('accessToken');
-  private userName = localStorage.getItem('name');
-
   constructor() {}
 
   /**
    * This the method return the token
    */
   public getToken(): string {
-    return this.token;
+    return localStorage.getItem('accessToken');
   }
 
   /**
    * This the method return the user name
    */
   public getUserName(): string {
-    return this.userName;
+    return localStorage.getItem('name');
   }
 
   /**
@@ -36,21 +35,31 @@ export class ApplicationService {
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken);
     localStorage.setItem('expiresIn', expiresIn.toString());
-
-    this.token = accessToken;
-    this.userName = name;
   }
 
   /**
    * This the method set the token
    */
-  public removeToken() {
+  public removeToken(): boolean {
     localStorage.removeItem('name');
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('expiresIn');
 
-    this.token = null;
-    this.userName = null;
+    return true;
+  }
+
+  public validateToken(): Promise<void> {
+    return new Promise((resolve) => {
+      const token = this.getToken();
+      if (token) {
+        const expiresIn = localStorage.getItem('expiresIn');
+        // Validar token
+        // Quando a data estiver perto de expirar, renovar um novo token
+        console.log('Data do token: ' + expiresIn);
+      }
+
+      resolve(null);
+    });
   }
 }

@@ -17,8 +17,4 @@ export class LoginService {
     const account: Account = new Account(email, password, 'password');
     return this.http.post<any>(`${environment.api}${this.endpoint}`, account);
   }
-
-  logout() {
-    //
-  }
 }

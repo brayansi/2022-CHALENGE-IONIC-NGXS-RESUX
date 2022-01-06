@@ -66,7 +66,6 @@ export class LoginState {
    */
   @Action(LoginError)
   async loginError(ctx: StateContext<LoginStateModel>, action: LoginError) {
-    console.log('Erro ao tentar realizar login');
     ctx.patchState({ ...ctx.getState(), loading: ctx.getState().loading - 1 });
   }
 }
