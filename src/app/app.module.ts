@@ -12,6 +12,7 @@ import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
 import { LoginState } from './pages/login/login.state';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    FlexLayoutModule,
     NgxsModule.forRoot([LoginState], {
       developmentMode: !environment.production,
     }),

@@ -1,0 +1,36 @@
+.section {
+  height: 100vh;
+  width: 100vw;
+  background-color: #1E5084;
+}
+
+.container {
+  margin: 0px ;
+  height: 100%;
+  padding: 36px;
+  max-width: 500px;
+}
+
+.logo {
+  margin-bottom: 100px;
+}
+
+.icon {
+  height: 36px;
+  width: 36px;
+  margin-right: 20px;
+}
+
+.input {
+  padding-bottom: 16px;
+
+  .item-input {
+    height: 36px;
+    border-radius: 10px;
+  }
+}
+
+.button {
+  margin-top: 15px;
+  width: 100px;
+}

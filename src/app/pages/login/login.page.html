@@ -1,1 +1,39 @@
-<ion-content> </ion-content>
+<ion-content>
+  <section class="section" fxLayout="row" fxLayoutAlign="center center">
+    <div class="container" fxLayout="column" fxLayoutAlign="center center">
+      <ion-img class="logo" src="./../../../assets/image/Logo.svg"></ion-img>
+      <form [formGroup]="form" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="input" fxLayout="row" fxLayoutAlign="center center">
+          <ion-img class="icon" src="./../../../assets/icon/user.svg"></ion-img>
+          <ion-item>
+            <ion-input
+              type="email"
+              id="email"
+              formControlName="email"
+              placeholder="Usuário"
+            ></ion-input>
+          </ion-item>
+        </div>
+        <div class="input" fxLayout="row" fxLayoutAlign="center center">
+          <ion-img
+            class="icon"
+            src="./../../../assets/icon/password.svg"
+          ></ion-img>
+
+          <ion-item>
+            <ion-input
+              type="password"
+              id="password"
+              formControlName="password"
+              placeholder="Senha"
+            ></ion-input>
+          </ion-item>
+        </div>
+      </form>
+
+      <ion-button class="button" color="secondary" (click)="login()">
+        LOGIN
+      </ion-button>
+    </div>
+  </section>
+</ion-content>
