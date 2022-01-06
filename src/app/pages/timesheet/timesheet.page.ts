@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { ApplicationService } from 'src/app/service/application.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-timesheet',
+  templateUrl: 'timesheet.page.html',
+  styleUrls: ['timesheet.page.scss'],
 })
-export class HomePage {
+export class TimesheetPage {
   constructor(public applicationService: ApplicationService) {}
 }

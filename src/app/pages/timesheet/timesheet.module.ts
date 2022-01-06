@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
+import { TimesheetPage } from './timesheet.page';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { TimesheetPageRoutingModule } from './timesheet-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -12,10 +12,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    TimesheetPageRoutingModule,
     FlexLayoutModule,
     ReactiveFormsModule,
   ],
-  declarations: [HomePage],
+  declarations: [TimesheetPage],
 })
-export class HomePageModule {}
+export class TimesheetPageModule {}

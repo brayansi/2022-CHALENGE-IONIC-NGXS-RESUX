@@ -23,7 +23,7 @@ export class AuthGuardService {
     console.log(state.url);
 
     if (state.url === '/login' && token) {
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/timesheet');
       return false;
     } else if (state.url === '/login' && !token) {
       return true;

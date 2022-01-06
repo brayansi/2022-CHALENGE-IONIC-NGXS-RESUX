@@ -55,7 +55,7 @@ export class LoginState {
   @Action(LoginSuccess)
   async loginSuccess(ctx: StateContext<LoginStateModel>, action: LoginSuccess) {
     this.applicationService.setToken(action.accountResponseDto);
-    await this.navController.navigateRoot('/home');
+    await this.navController.navigateRoot('/timesheet');
     ctx.patchState({ ...ctx.getState(), loading: ctx.getState().loading - 1 });
   }
 
