@@ -1,12 +1,10 @@
 .section {
   height: 100vh;
   width: 100vw;
-  background-color: #1E5084;
 }
 
 .container {
   margin: 0px ;
-  height: 100%;
   width: 100%;
   padding: 36px;
   max-width: 500px;
@@ -28,6 +26,60 @@
   margin-top: 0px;
   margin-top: 0px;
   font-size: 15px;
-  color: #FFFFFF;
+  color: var(--ion-text-color-2);
   text-align: right;
+}
+
+.date-time {
+  color: var(--ion-text-color-2);
+  font-weight: bold;
+  font-size: 20px;
+  padding: 0px 15px;
+}
+
+.count-time {
+  color: var(--ion-color-secondary);
+  padding-top: 15px;
+}
+
+.button-container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  .ion-color-primary  {
+    border-radius: 3px;
+    border: 2px solid var(--ion-color-secondary);
+  }
+}
+
+.button-disabled {
+  opacity: 1;
+}
+
+.list {
+  width: 100%;
+  height: 100%;
+}
+
+.container-itemBounds {
+  margin-bottom: 30px;
+}
+
+.container-item {
+  margin-bottom: 5px;
+}
+
+.item {
+  color: var(--ion-color-secondary);
+  font-size: 12px;
+  margin: 0px 5px;
+  width: 150px;
+}
+
+.box {
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+  width: 100%;
+  height: 25px;
 }

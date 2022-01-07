@@ -1,7 +1,9 @@
 export class Timesheet {
-  id: number;
-  start: Date;
-  startLunch: Date;
-  endLunch: Date;
-  end: Date;
+  constructor(
+    public id: number | null,
+    public start: string | Date,
+    public startLunch: string | Date,
+    public endLunch: string | Date,
+    public end: string | Date
+  ) {}
 }

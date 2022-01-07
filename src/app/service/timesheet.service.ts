@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Timesheet } from 'src/app/model/Timesheet';
+import { TimesheetResponseDto } from '../model/TimesheetResponseDto';
 import { ApplicationService } from './application.service';
 import { GenericHttpService } from './generic-http.service';
 
@@ -19,8 +20,10 @@ export class TimesheetService {
     return this.genericHttpService.findOne<Timesheet>(`${this.endpoint}/${id}`);
   }
 
-  findAll(): Observable<Array<Timesheet>> {
-    return this.genericHttpService.findAll<Timesheet>(`${this.endpoint}`);
+  findAll(): Observable<TimesheetResponseDto> {
+    return this.genericHttpService.findAll<TimesheetResponseDto>(
+      `${this.endpoint}`
+    );
   }
 
   create(timesheet: Timesheet): Observable<Timesheet> {
@@ -30,14 +33,14 @@ export class TimesheetService {
     );
   }
 
-  update(id: string, timesheet: Timesheet): Observable<Timesheet> {
+  update(id: number, timesheet: Timesheet): Observable<Timesheet> {
     return this.genericHttpService.update<Timesheet>(
       `${this.endpoint}/${id}`,
       timesheet
     );
   }
 
-  delete(id: string) {
+  delete(id: number) {
     return this.genericHttpService.delete<Timesheet>(`${this.endpoint}/${id}`);
   }
 

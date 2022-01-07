@@ -1,5 +1,5 @@
-<ion-content [fullscreen]="true">
-  <section class="section" fxLayout="row" fxLayoutAlign="center center">
+<ion-content [fullscreen]="true" color="primary">
+  <section class="section" fxLayout="column" fxLayoutAlign="start center">
     <div class="container" fxLayout="row" fxLayoutAlign="space-between start">
       <ion-img class="logo" src="./../../../assets/image/Logo.svg"></ion-img>
       <h2 class="name">Olá, {{ applicationService.getUserName() }}</h2>
@@ -9,5 +9,111 @@
         (click)="logout()"
       ></ion-img>
     </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="date-time">{{date}}</div>
+      <div class="date-time">{{time}}</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="date-time count-time">Tempo {{ accumulated }}</div>
+    </div>
+
+    <div class="button-container">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <ion-button
+          [disabled]="(timesheet$ | async)[0]?.start"
+          [color]="(timesheet$ | async)[0]?.start ? 'secondary' : 'primary'"
+          (click)="setTime()"
+        >
+          CHEGUEI
+        </ion-button>
+        <ion-button
+          [disabled]="(timesheet$ | async)[0]?.startLunch || !(timesheet$ | async)[0]?.start"
+          [color]="(timesheet$ | async)[0]?.startLunch ? 'secondary' : 'primary'"
+          (click)="setTime()"
+        >
+          FUI ALMOÇAR
+        </ion-button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <ion-button
+          [disabled]="(timesheet$ | async)[0]?.endLunch || !(timesheet$ | async)[0]?.startLunch"
+          [color]="(timesheet$ | async)[0]?.endLunch ? 'secondary' : 'primary'"
+          (click)="setTime()"
+          >VOLTEI</ion-button
+        >
+        <ion-button
+          [disabled]="(timesheet$ | async)[0]?.end || !(timesheet$ | async)[0]?.endLunch"
+          [color]="(timesheet$ | async)[0]?.end ? 'secondary' : 'primary'"
+          (click)="setTime()"
+        >
+          FUI
+        </ion-button>
+      </div>
+    </div>
+    <ion-content class="content-list" color="primary">
+      <ion-virtual-scroll
+        [items]="(state$ | async).itens"
+        approxItemHeight="30px"
+      >
+        <div
+          class="container-itemBounds"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          *virtualItem="let item; let itemBounds = bounds;"
+        >
+          <div
+            class="container-item"
+            fxLayout="row"
+            fxLayoutAlign="space-around center"
+          >
+            <div class="item" fxLayout="column" fxLayoutAlign="center center">
+              <label>DATA</label>
+              <div class="box">
+                {{ item.start ? formatDate(item.start) : '' }}
+              </div>
+            </div>
+            <div class="item" fxLayout="column" fxLayoutAlign="center center">
+              <label>HORA INICIO</label>
+              <div class="box">
+                {{ item.start ? formatTime(item.start, true) : '' }}
+              </div>
+            </div>
+          </div>
+          <div
+            class="container-item"
+            fxLayout="row"
+            fxLayoutAlign="space-around center"
+          >
+            <div class="item" fxLayout="column" fxLayoutAlign="center center">
+              <label>ALMOÇO INÍCIO</label>
+              <div class="box">
+                {{ item.startLunch? formatTime(item.startLunch) : '' }}
+              </div>
+            </div>
+            <div class="item" fxLayout="column" fxLayoutAlign="center center">
+              <label>ALMOÇO FIM</label>
+              <div class="box">
+                {{ item.endLunch ? formatTime(item.endLunch) : item.endLunch }}
+              </div>
+            </div>
+          </div>
+          <div
+            class="container-item"
+            fxLayout="row"
+            fxLayoutAlign="space-around center"
+          >
+            <div class="item" fxLayout="column" fxLayoutAlign="center center">
+              <label>HORA FIM</label>
+              <div class="box">{{ item.end ? formatTime(item.end) : '' }}</div>
+            </div>
+            <div class="item" fxLayout="column" fxLayoutAlign="center center">
+              <label>FIM</label>
+              <div class="box">{{ item.end ? formatDate(item.end) : '' }}</div>
+            </div>
+          </div>
+        </div>
+      </ion-virtual-scroll>
+    </ion-content>
   </section>
 </ion-content>

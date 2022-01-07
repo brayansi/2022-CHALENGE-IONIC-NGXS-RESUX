@@ -20,8 +20,8 @@ export class GenericHttpService {
     return this.http.get<T>(`${environment.api}${endpoint}`);
   }
 
-  public findAll<T>(endpoint: string): Observable<T[]> {
-    return this.http.get<T[]>(`${environment.api}${endpoint}`);
+  public findAll<T>(endpoint: string): Observable<T> {
+    return this.http.get<T>(`${environment.api}${endpoint}`);
   }
 
   public create<T>(endpoint: string, data: T): Observable<T> {
