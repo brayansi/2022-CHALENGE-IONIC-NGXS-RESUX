@@ -1,4 +1,17 @@
 <ion-content>
+  <div
+    class="loading"
+    *ngIf="(state$ |async).loading"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+  >
+    <div>
+      <ion-img
+        class="loading-img"
+        src="./../../../assets/icon/loading.gif"
+      ></ion-img>
+    </div>
+  </div>
   <section class="section" fxLayout="row" fxLayoutAlign="center center">
     <div class="container" fxLayout="column" fxLayoutAlign="center center">
       <ion-img class="logo" src="./../../../assets/image/Logo.svg"></ion-img>

@@ -34,3 +34,16 @@
   margin-top: 15px;
   width: 100px;
 }
+
+.loading {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 999999999;
+  background-color: #00000022;
+}
+
+.loading-img {
+  height: 50px;
+  width: 50px;
+}
