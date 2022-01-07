@@ -103,7 +103,11 @@ export class TimesheetState {
    * @param ctx State context provided to the actions in the state.
    */
   @Action(FindAllTimesheetError)
-  async findAllTimesheetError(ctx: StateContext<TimesheetStateModel>) {
+  async findAllTimesheetError(
+    ctx: StateContext<TimesheetStateModel>,
+    action: FindAllTimesheetError
+  ) {
+    console.log(`Error: ${action.error}`);
     ctx.patchState({
       ...ctx.getState(),
       itens: [],
@@ -151,7 +155,12 @@ export class TimesheetState {
    * @param ctx State context provided to the actions in the state.
    */
   @Action(CreateTimesheetError)
-  async createTimesheetError(ctx: StateContext<TimesheetStateModel>) {
+  async createTimesheetError(
+    ctx: StateContext<TimesheetStateModel>,
+    action: CreateTimesheetError
+  ) {
+    console.log(`Error: ${action.error}`);
+
     ctx.patchState({
       ...ctx.getState(),
       loading: ctx.getState().loading - 1,
@@ -198,7 +207,12 @@ export class TimesheetState {
    * @param ctx State context provided to the actions in the state.
    */
   @Action(UpdateTimesheetError)
-  async updateTimesheetError(ctx: StateContext<TimesheetStateModel>) {
+  async updateTimesheetError(
+    ctx: StateContext<TimesheetStateModel>,
+    action: UpdateTimesheetError
+  ) {
+    console.log(`Error: ${action.error}`);
+
     ctx.patchState({
       ...ctx.getState(),
       loading: ctx.getState().loading - 1,
