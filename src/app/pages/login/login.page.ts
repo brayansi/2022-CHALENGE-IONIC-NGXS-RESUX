@@ -11,23 +11,16 @@ import { LoginState, LoginStateModel } from './login.state';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit, ViewDidLeave {
+export class LoginPage implements ViewDidLeave {
   @Select(LoginState.getState) state$!: Observable<LoginStateModel>;
 
   form!: FormGroup;
 
-  constructor(private store: Store, private formBuilder: FormBuilder) {}
-
-  /**
-   * This is the method is executed when the component are initiated
-   */
-  ngOnInit() {
+  constructor(private store: Store, private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       email: [null, Validators.required],
       password: [null, Validators.required],
     });
-
-    // this.store.dispatch(new Login('v.brayansantos@gmail.com', '123456'));
   }
 
   /**

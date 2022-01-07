@@ -34,27 +34,32 @@ export class TimesheetPage {
   ) {
     this.store.dispatch(new FindAllTimesheet());
 
-    setInterval(() => {
-      const data = this.store.selectSnapshot(TimesheetState.getTimesheet);
+    setTimeout(() => {
+      setInterval(() => {
+        const data = this.store.selectSnapshot(TimesheetState.getTimesheet);
 
-      if (data.length > 0) {
-        if (!data[0].startLunch || data[0]?.endLunch) {
-          const diff = moment().diff(
-            moment((data[0].start as string).split('.')[0]),
-            'seconds'
-          );
+        if (data.length > 0) {
+          if (!data[0].startLunch || data[0]?.endLunch) {
+            const diff = moment().diff(
+              moment((data[0].start as string).split('.')[0]),
+              'seconds'
+            );
 
-          this.accumulated = moment((data[0].start as string).split('.')[0])
-            .startOf('s')
-            .add(diff, 'seconds')
-            .format('HH:mm:ss');
+            this.accumulated = moment((data[0].start as string).split('.')[0])
+              .startOf('s')
+              .add(diff, 'seconds')
+              .format('HH:mm:ss');
+          }
+        } else {
+          this.accumulated = '00:00:00';
         }
-      } else {
-        this.accumulated = '00:00:00';
-      }
+      }, 1000);
     }, 1000);
   }
 
+  /**
+   * This is the method that triggers an action to set timesheet
+   */
   setTime() {
     const data = this.store.selectSnapshot(TimesheetState.getTimesheet);
 
@@ -79,14 +84,23 @@ export class TimesheetPage {
     }
   }
 
+  /**
+   * This is the method that return date formatted
+   */
   formatDate(date: string): string {
     return moment(date.split('.')[0]).format('DD/MM/YYYY');
   }
 
+  /**
+   * This is the method that return date time formatted
+   */
   formatTime(date: string, isSetUtf?: boolean): string {
     return moment(date.split('.')[0]).format('HH:mm:ss');
   }
 
+  /**
+   * This is the method that triggers an action to logout
+   */
   logout() {
     this.store.dispatch(new Logout());
   }

@@ -13,6 +13,12 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * This is the method by which the user logs in.
+   *
+   * @param email user email
+   * @param password user password
+   */
   login(email: string, password: string): Observable<any> {
     const account: Account = new Account(email, password, 'password');
     return this.http.post<any>(`${environment.api}${this.endpoint}`, account);

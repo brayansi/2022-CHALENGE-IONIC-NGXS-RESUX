@@ -24,13 +24,19 @@ export class LoginState {
     private navController: NavController
   ) {}
 
+  /**
+   * This is the selector that return timesheet page state
+   *
+   * @param state Timesheet page state
+   * @returns state
+   */
   @Selector()
   static getState(state: LoginStateModel): LoginStateModel {
     return state;
   }
 
   /**
-   * This method dispatches login method
+   * This is the method dispatches login method
    *
    * @param ctx State context provided to the actions in the state.
    * @param action This action data
@@ -47,7 +53,7 @@ export class LoginState {
   }
 
   /**
-   * This method is dispatched when login is successfully
+   * This is the method is dispatched when login is successfully
    *
    * @param ctx State context provided to the actions in the state.
    * @param action This action data
@@ -60,7 +66,7 @@ export class LoginState {
   }
 
   /**
-   * This method is dispatched when login failed
+   * This is the method is dispatched when login failed
    *
    * @param ctx State context provided to the actions in the state.
    */

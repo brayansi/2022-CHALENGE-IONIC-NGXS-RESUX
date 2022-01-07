@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AccountResponseDto } from '../model/AccountResponseDto';
 
-import moment from 'moment';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -10,21 +8,21 @@ export class ApplicationService {
   constructor() {}
 
   /**
-   * This the method return the token
+   * This is the method return the token
    */
   public getToken(): string {
     return localStorage.getItem('accessToken');
   }
 
   /**
-   * This the method return the user name
+   * This is the method return the user name
    */
   public getUserName(): string {
     return localStorage.getItem('name');
   }
 
   /**
-   * This the method set the token
+   * This is the method set the token
    *
    * @param accountResponseDto
    */
@@ -38,7 +36,7 @@ export class ApplicationService {
   }
 
   /**
-   * This the method set the token
+   * This is the method remove the token to storage
    */
   public removeToken(): boolean {
     localStorage.removeItem('name');
@@ -49,6 +47,11 @@ export class ApplicationService {
     return true;
   }
 
+  /**
+   * This is the method that validates the token and renews it
+   *
+   * @returns
+   */
   public validateToken(): Promise<void> {
     return new Promise((resolve) => {
       const token = this.getToken();

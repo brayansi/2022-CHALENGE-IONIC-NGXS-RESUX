@@ -15,12 +15,18 @@ export class AuthGuardService {
     private applicationService: ApplicationService
   ) {}
 
+  /**
+   * This is the method what validate ionic router
+   *
+   * @param route application router
+   * @param state Snapshot router
+   * @returns if the route validates
+   */
   public async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean> {
     const token = this.applicationService.getToken();
-    console.log(state.url);
 
     if (state.url === '/login' && token) {
       this.router.navigateByUrl('/timesheet');
